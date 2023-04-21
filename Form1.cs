@@ -14,48 +14,52 @@ namespace SMI1002_TP
         {
             bool re = false;
             string message = "";
-            string connectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=172.16.25.43)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=coursbd.uqtr.ca)));User Id=SMI1002_017;Password=76gesj98;";
-            try
+            Form5 form5 = new();
+            if (form5.ShowDialog() == DialogResult.OK)
             {
-                OracleConnection? conn = ConnexionOracle.DbConn(connectionString, ref message, ref re);
-                if (conn == null)
+                string connectionString = form5.ReturnValue;
+                //"Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=172.16.25.43)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=coursbd.uqtr.ca)));User Id=SMI1002_017;Password=76gesj98;"
+                try
                 {
-                    MessageBox.Show("Echec de la connexion ¨¤ la base de donn¨¦es :" + message);
-                }
-                else if (re)
-                {
-                    MessageBox.Show("Connexion ¨¤ la base de donn¨¦es r¨¦ussie");
-                    string sql = string.Format("SELECT table_name FROM user_tables");
-                    DataTable? dt = ConnexionOracle.SelectSql(sql, ref message);
-                    this.dataGridView1.DataSource = dt;
-                    if (dataGridView1.SelectedCells.Count > 0)
+                    OracleConnection? conn = ConnexionOracle.DbConn(connectionString, ref message, ref re);
+                    if (conn == null)
                     {
-                        DataGridViewCell cell = dataGridView1.SelectedCells[0];
-                        object value = cell.Value;
-                        string? tableName = value.ToString();
-                        if (tableName is not null)
+                        MessageBox.Show("Echec de la connexion ¨¤ la base de donn¨¦es :" + message);
+                    }
+                    else if (re)
+                    {
+                        MessageBox.Show("Connexion ¨¤ la base de donn¨¦es r¨¦ussie");
+                        string sql = string.Format("SELECT table_name FROM user_tables");
+                        DataTable? dt = ConnexionOracle.SelectSql(sql, ref message);
+                        this.dataGridView1.DataSource = dt;
+                        if (dataGridView1.SelectedCells.Count > 0)
                         {
-                            string messagetable = "";
-                            string sqltable = string.Format($"SELECT * FROM {tableName}");
-                            DataTable? dt2 = ConnexionOracle.SelectSql(sqltable, ref messagetable);
-                            this.dataGridView2.DataSource = dt2;
+                            DataGridViewCell cell = dataGridView1.SelectedCells[0];
+                            object value = cell.Value;
+                            string? tableName = value.ToString();
+                            if (tableName is not null)
+                            {
+                                string messagetable = "";
+                                string sqltable = string.Format($"SELECT * FROM {tableName}");
+                                DataTable? dt2 = ConnexionOracle.SelectSql(sqltable, ref messagetable);
+                                this.dataGridView2.DataSource = dt2;
+                            }
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Echec de la connexion ¨¤ la base de donn¨¦es :" + message);
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Echec de la connexion ¨¤ la base de donn¨¦es :" + message);
+
+                    MessageBox.Show("Echec de la connexion ¨¤ la base de donn¨¦es :" + ex);
                 }
             }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Echec de la connexion ¨¤ la base de donn¨¦es :" + ex);
-            }
-
         }
 
-        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             string message = "";
             if (e.RowIndex >= 0)
