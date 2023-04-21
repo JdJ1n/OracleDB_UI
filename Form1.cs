@@ -45,10 +45,12 @@ namespace SMI1002_TP
                                 this.dataGridView2.DataSource = dt2;
                             }
                         }
+                        conn.Close();
                     }
                     else
                     {
                         MessageBox.Show("Echec de la connexion ¨¤ la base de donn¨¦es :" + message);
+                        conn.Close();
                     }
                 }
                 catch (Exception ex)
