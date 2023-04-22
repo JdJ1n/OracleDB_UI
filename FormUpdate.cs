@@ -3,12 +3,12 @@ using System.Data;
 
 namespace SMI1002_TP
 {
-    public partial class Form4 : Form
+    public partial class FormUpdate : Form
     {
         private readonly string tableName;
         private readonly string primaryKeyColumnName;
         private readonly string primaryKey;
-        public Form4(string tableName, string primaryKeyColumnName, string primaryKey)
+        public FormUpdate(string tableName, string primaryKeyColumnName, string primaryKey)
         {
             InitializeComponent();
             this.tableName = tableName;

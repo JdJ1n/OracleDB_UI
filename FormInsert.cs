@@ -3,10 +3,10 @@ using System.Data;
 
 namespace SMI1002_TP
 {
-    public partial class Form2 : Form
+    public partial class FormInsert : Form
     {
         private readonly string tableName;
-        public Form2(string tableName)
+        public FormInsert(string tableName)
         {
             InitializeComponent();
             this.tableName = tableName;

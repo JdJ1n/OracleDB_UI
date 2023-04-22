@@ -1,9 +1,9 @@
 ﻿namespace SMI1002_TP
 {
-    public partial class Form5 : Form
+    public partial class FormConnect : Form
     {
         public string ReturnValue { get; set; }
-        public Form5()
+        public FormConnect()
         {
             InitializeComponent();
             ReturnValue = string.Empty;

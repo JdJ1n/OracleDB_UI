@@ -3,12 +3,12 @@ using System.Data;
 
 namespace SMI1002_TP
 {
-    public partial class Form3 : Form
+    public partial class FormDelete : Form
     {
         private readonly string tableName;
         private readonly string primaryKeyColumnName;
         private readonly string primaryKey;
-        public Form3(string tableName, string primaryKeyColumnName, string primaryKey)
+        public FormDelete(string tableName, string primaryKeyColumnName, string primaryKey)
         {
             InitializeComponent();
             this.tableName = tableName;

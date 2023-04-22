@@ -1,6 +1,6 @@
 ﻿namespace SMI1002_TP
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         ///  Required designer variable.
@@ -37,6 +37,7 @@
             dataGridView2 = new DataGridView();
             label2 = new Label();
             label3 = new Label();
+            button5 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
@@ -107,7 +108,6 @@
             label1.Size = new Size(358, 24);
             label1.TabIndex = 6;
             label1.Text = "SMI1002_017   Jiadong Jin  Guanting He";
-            //label1.Click += Label1_Click;
             // 
             // dataGridView2
             // 
@@ -142,11 +142,22 @@
             label3.TabIndex = 9;
             label3.Text = "Effectuer des opérations sur des objets sélectionnés :";
             // 
+            // button5
+            // 
+            button5.Location = new Point(177, 12);
+            button5.Name = "button5";
+            button5.Size = new Size(112, 34);
+            button5.TabIndex = 10;
+            button5.Text = "Trace";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += Button5_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(11F, 24F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1330, 635);
+            Controls.Add(button5);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(dataGridView2);
@@ -175,5 +186,6 @@
         private DataGridView dataGridView2;
         private Label label2;
         private Label label3;
+        private Button button5;
     }
 }

@@ -3,9 +3,9 @@ using System.Data;
 
 namespace SMI1002_TP
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }
@@ -14,7 +14,7 @@ namespace SMI1002_TP
         {
             bool re = false;
             string message = "";
-            Form5 form5 = new();
+            FormConnect form5 = new();
             if (form5.ShowDialog() == DialogResult.OK)
             {
                 string connectionString = form5.ReturnValue;
@@ -87,7 +87,7 @@ namespace SMI1002_TP
                 string? tableName = value.ToString();
                 if (tableName is not null)
                 {
-                    Form2 form2 = new(tableName);
+                    FormInsert form2 = new(tableName);
                     if (form2.ShowDialog() == DialogResult.OK)
                     {
                         string message = "";
@@ -117,7 +117,7 @@ namespace SMI1002_TP
                     string? primaryKey = primaryKeyValue.ToString();
                     if (tableName is not null && primaryKey is not null && primaryKeyColumnName is not null)
                     {
-                        Form3 form3 = new(tableName, primaryKeyColumnName, primaryKey);
+                        FormDelete form3 = new(tableName, primaryKeyColumnName, primaryKey);
                         if (form3.ShowDialog() == DialogResult.OK)
                         {
                             string messagetable = "";
@@ -148,7 +148,7 @@ namespace SMI1002_TP
                     string? primaryKey = primaryKeyValue.ToString();
                     if (tableName is not null && primaryKey is not null && primaryKeyColumnName is not null)
                     {
-                        Form4 form4 = new(tableName, primaryKeyColumnName, primaryKey);
+                        FormUpdate form4 = new(tableName, primaryKeyColumnName, primaryKey);
                         if (form4.ShowDialog() == DialogResult.OK)
                         {
                             string messagetable = "";
@@ -161,6 +161,15 @@ namespace SMI1002_TP
             }
 
 
+        }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            FormTrace form6 = new();
+            if (form6.ShowDialog() == DialogResult.Cancel)
+            {
+
+            }
         }
     }
 }

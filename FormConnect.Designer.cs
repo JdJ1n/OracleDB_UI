@@ -1,6 +1,6 @@
 ﻿namespace SMI1002_TP
 {
-    partial class Form5
+    partial class FormConnect
     {
         /// <summary>
         /// Required designer variable.

@@ -1,6 +1,6 @@
 ﻿namespace SMI1002_TP
 {
-    partial class Form3
+    partial class FormDelete
     {
         /// <summary>
         /// Required designer variable.
