@@ -91,7 +91,7 @@ namespace SMI1002_TP
                         message = e.Message.ToString();
                     }
                     // Début d'une transaction
-                    transaction = conn.BeginTransaction(IsolationLevel.Serializable);
+                    transaction = conn.BeginTransaction(IsolationLevel.ReadCommitted);
                     OracleCommand cmd = new(sql, conn);
                     cmd.Parameters.AddRange(parameters);
                     int count = cmd.ExecuteNonQuery();
