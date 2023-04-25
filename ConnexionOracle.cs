@@ -34,7 +34,7 @@ namespace SMI1002_TP
         }
         #endregion
 
-        #region ConnexionStr
+        #region ConnexionBDstr
         public static OracleConnection? DbConn(string connectionString, ref string message, ref bool re)
         {
             //La façon dont la base de données est connectée
@@ -126,7 +126,6 @@ namespace SMI1002_TP
         #region Consultation
         public static DataTable? SelectSql(string sql, ref string message)
         {
-
             DataTable? dt = null;
             OracleConnection? conn;
             message = string.Empty;
@@ -158,12 +157,17 @@ namespace SMI1002_TP
                 message = "La connexion à la base de données a échoué en raison de :" + ee.Message.ToString();
                 return null;
             }
+            // Début d'une transaction
+            OracleTransaction transaction = conn.BeginTransaction();
+
             try
             {
                 OracleDataAdapter adapter = new(sql, conn);
                 DataSet set = new();
                 adapter.Fill(set);
                 dt = set.Tables[0];
+                // Soumission d'une transaction
+                transaction.Commit();
                 conn.Close();
                 conn.Dispose();
                 adapter.Dispose();
@@ -171,10 +175,15 @@ namespace SMI1002_TP
             }
             catch (Exception ex)
             {
+                // Annulation d'une transaction
+                transaction.Rollback();
+
                 message = ex.Message.ToString(); ;
             }
+
             return dt;
         }
+
         #endregion
         public static DataTable? SelectSql(string sql, OracleParameter[] parameters, ref string message)
         {
@@ -209,6 +218,8 @@ namespace SMI1002_TP
                 message = "La connexion à la base de données a échoué en raison de :" + ee.Message.ToString();
                 return null;
             }
+            // Début d'une transaction
+            OracleTransaction transaction = conn.BeginTransaction(IsolationLevel.Serializable);
             try
             {
                 OracleDataAdapter adapter = new(sql, conn);
@@ -216,6 +227,8 @@ namespace SMI1002_TP
                 DataSet set = new();
                 adapter.Fill(set);
                 dt = set.Tables[0];
+                // Soumission d'une transaction
+                transaction.Commit();
                 conn.Close();
                 conn.Dispose();
                 adapter.Dispose();
@@ -223,6 +236,8 @@ namespace SMI1002_TP
             }
             catch (Exception ex)
             {
+                // Annulation d'une transaction
+                transaction.Rollback();
                 message = ex.Message.ToString(); ;
             }
             return dt;

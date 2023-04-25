@@ -137,7 +137,7 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(314, 30);
             textBox4.TabIndex = 12;
-            textBox4.Text = "SMI1002_017";
+            textBox4.Text = "SMI1002_070";
             // 
             // textBox5
             // 
@@ -146,9 +146,9 @@
             textBox5.PasswordChar = '*';
             textBox5.Size = new Size(314, 30);
             textBox5.TabIndex = 13;
-            textBox5.Text = "76gesj98";
+            textBox5.Text = "93cpdf92";
             // 
-            // Form5
+            // FormConnect
             // 
             AutoScaleDimensions = new SizeF(11F, 24F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -165,7 +165,7 @@
             Controls.Add(label1);
             Controls.Add(button2);
             Controls.Add(button1);
-            Name = "Form5";
+            Name = "FormConnect";
             Text = "Se connecter";
             ResumeLayout(false);
             PerformLayout();

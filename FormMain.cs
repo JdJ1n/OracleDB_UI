@@ -18,7 +18,6 @@ namespace SMI1002_TP
             if (form5.ShowDialog() == DialogResult.OK)
             {
                 string connectionString = form5.ReturnValue;
-                //"Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=172.16.25.43)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=coursbd.uqtr.ca)));User Id=SMI1002_017;Password=76gesj98;"
                 try
                 {
                     OracleConnection? conn = ConnexionOracle.DbConn(connectionString, ref message, ref re);
@@ -163,13 +162,5 @@ namespace SMI1002_TP
 
         }
 
-        private void Button5_Click(object sender, EventArgs e)
-        {
-            FormTrace form6 = new();
-            if (form6.ShowDialog() == DialogResult.Cancel)
-            {
-
-            }
-        }
     }
 }
